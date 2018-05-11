@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
- 
-  
-
-  resources :games
   root 'games#index'
-
-  #match '/attack' => 'games#attack'
+  resources :games do   
+    get 'attack'
+  end  
 
 end
