@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rpg.name %>
+</p>
+
+<p>
+  <strong>Hp:</strong>
+  <%= @rpg.hp %>
+</p>
+
+<p>
+  <strong>Max hp:</strong>
+  <%= @rpg.max_hp %>
+</p>
+
+<p>
+  <strong>Potion:</strong>
+  <%= @rpg.potion %>
+</p>
+
+<p>
+  <strong>Scrawl:</strong>
+  <%= @rpg.scrawl %>
+</p>
+
+<p>
+  <strong>Enemy name:</strong>
+  <%= @rpg.enemy_name %>
+</p>
+
+<p>
+  <strong>Enemy hp:</strong>
+  <%= @rpg.enemy_hp %>
+</p>
+
+<%= link_to 'Edit', edit_rpg_path(@rpg) %> |
+<%= link_to 'Back', rpgs_path %>

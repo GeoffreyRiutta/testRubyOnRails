@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  hp: 1
+  max_hp: 1
+  potion: 1
+  scrawl: MyText
+  enemy_name: MyText
+  enemy_hp: 1
+
+two:
+  name: MyText
+  hp: 1
+  max_hp: 1
+  potion: 1
+  scrawl: MyText
+  enemy_name: MyText
+  enemy_hp: 1

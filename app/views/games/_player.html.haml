@@ -1,0 +1,22 @@
+.progress
+  - if @game.hp < @game.max_hp/4 
+    .progress-bar.progress-bar-danger{"role"=>"progressbar","aria-valuenow"=>"#{100*@game.hp/@game.max_hp}","aria-valuemin"=>"0","aria-valuemax"=>"100","style"=>"width:#{100*@game.hp/@game.max_hp}%"}
+  - elsif @game.hp < @game.max_hp/2 
+    .progress-bar.progress-bar-warning{"role"=>"progressbar","aria-valuenow"=>"#{100*@game.hp/@game.max_hp}","aria-valuemin"=>"0","aria-valuemax"=>"100","style"=>"width:#{100*@game.hp/@game.max_hp}%"}
+  - else
+    .progress-bar.progress-bar-success{"role"=>"progressbar","aria-valuenow"=>"#{100*@game.hp/@game.max_hp}","aria-valuemin"=>"0","aria-valuemax"=>"100","style"=>"width:#{100*@game.hp/@game.max_hp}%"}
+
+
+
+.col-sm-1
+  %strong Name:
+  = @game.name
+.col-sm-1
+  %strong HP:
+  = @game.hp
+.col-sml-1
+  %strong Max HP:
+  = @game.max_hp
+
+
+

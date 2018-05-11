@@ -1,0 +1,23 @@
+
+.content
+  = render 'player', :game => @game
+
+%p
+  %strong Potion:
+  = @game.potion
+
+
+%p
+  %strong Scrawl:
+  = @game.scrawl
+
+%p
+  .col-sm-2
+    %strong Enemy name:
+    = @game.enemy_name
+  .col-sm-2
+    %strong Enemy hp:
+    = @game.enemy_hp
+%p
+  = link_to 'Edit', edit_game_path(@game) 
+  = link_to 'Back', games_path 

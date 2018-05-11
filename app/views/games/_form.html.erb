@@ -1,0 +1,52 @@
+<%= form_with(model: game, local: true) do |form| %>
+  <% if game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hp %>
+    <%= form.number_field :hp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_hp %>
+    <%= form.number_field :max_hp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :potion %>
+    <%= form.number_field :potion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :scrawl %>
+    <%= form.text_area :scrawl %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enemy_name %>
+    <%= form.text_area :enemy_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enemy_hp %>
+    <%= form.number_field :enemy_hp %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

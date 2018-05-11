@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rpgs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Hp</th>
+      <th>Max hp</th>
+      <th>Potion</th>
+      <th>Scrawl</th>
+      <th>Enemy name</th>
+      <th>Enemy hp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rpgs.each do |rpg| %>
+      <tr>
+        <td><%= rpg.name %></td>
+        <td><%= rpg.hp %></td>
+        <td><%= rpg.max_hp %></td>
+        <td><%= rpg.potion %></td>
+        <td><%= rpg.scrawl %></td>
+        <td><%= rpg.enemy_name %></td>
+        <td><%= rpg.enemy_hp %></td>
+        <td><%= link_to 'Show', rpg %></td>
+        <td><%= link_to 'Edit', edit_rpg_path(rpg) %></td>
+        <td><%= link_to 'Destroy', rpg, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rpg', new_rpg_path %>
