@@ -18,8 +18,15 @@ class GamesController < ApplicationController
   end
 
   def attack
-    @game.enemy_hp = @game.enemy_hp - 2
-    @game.scrawl = "#{@game.enemy_name} Was attacked!"
+    @game = Game.find(params[:game_id])
+    @game.scrawl = ""
+    if @game.hp < 1
+      @game.scrawl = "Alas #{@game.name} is food for the crows"
+      @game.save
+    else
+      attack_enemy
+    end
+
     redirect_to @game
   end
   # GET /games/1/edit
@@ -67,6 +74,40 @@ class GamesController < ApplicationController
   end
 
   private
+
+    def spawn_enemy
+      @game.enemy_name = "goblin"
+      @game.enemy_hp = 4
+      @game.scrawl = "#{@game.scrawl}\nA #{@game.enemy_name} appears!"
+      @game.save
+    end
+
+    def attack_enemy
+      roll = 1+rand(6)
+      if roll >= @game.enemy_hp
+        @game.scrawl = "#{@game.scrawl}\n#{@game.name} slays #{@game.enemy_name} with #{roll} damage!"
+        spawn_enemy
+      else
+        @game.scrawl = "#{@game.scrawl}\n#{@game.enemy_name} is hit for #{roll}!"
+        @game.enemy_hp = @game.enemy_hp - roll
+        @game.save
+        attack_player
+      end
+    end
+
+    def attack_player
+      roll = 1+rand(3)
+      if roll >= @game.hp
+        @game.scrawl = "#{@game.scrawl}\nAlas the #{@game.enemy_name} slew #{@game.name}"
+        @game.hp = 0
+        @game.save
+      else
+        @game.scrawl = "#{@game.scrawl}\n#{@game.name} is hit for #{roll}!"
+        @game.hp = @game.hp - roll
+        @game.save
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
